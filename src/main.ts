@@ -1,4 +1,5 @@
 import {app, BrowserWindow} from "electron";
+import { doSimpleKeyboardTest } from "./keyboard";
 
 function createWindow() {
   // Create the browser window.
@@ -6,6 +7,8 @@ function createWindow() {
 
   // and load the index.html of the app.
   win.loadFile("index.html");
+
+  doSimpleKeyboardTest();
 }
 
 app.on("ready", createWindow);
