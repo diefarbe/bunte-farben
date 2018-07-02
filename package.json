@@ -2,7 +2,7 @@
   "name": "bunte-farben",
   "version": "1.0.0",
   "description": "A chromatic colors electron app for das keyboard",
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "electron-rebuild --force",
@@ -19,8 +19,11 @@
   },
   "homepage": "https://github.com/diefarbe/bunte-farben#readme",
   "devDependencies": {
+    "@types/electron": "^1.6.10",
     "electron": "^2.0.3",
-    "electron-rebuild": "^1.7.3"
+    "electron-rebuild": "^1.7.3",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2"
   },
   "dependencies": {
     "das": "diefarbe/node-lib#better_state"
