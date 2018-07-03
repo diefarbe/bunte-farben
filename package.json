@@ -1,31 +1,30 @@
 {
   "name": "bunte-farben",
-  "version": "1.0.0",
-  "description": "A chromatic colors electron app for das keyboard",
-  "main": "dist/main.js",
+  "version": "0.0.1",
+  "description": "Das Keyboard Color GUI",
+  "main": "main.js",
+  "repository": "https://github.com/diefarbe/bunte-farben.git",
+  "author": "Stephen Bird",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "electron-rebuild --force",
-    "start": "electron ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/diefarbe/bunte-farben.git"
-  },
-  "author": "diefarbe",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/diefarbe/bunte-farben/issues"
-  },
-  "homepage": "https://github.com/diefarbe/bunte-farben#readme",
-  "devDependencies": {
-    "@types/electron": "^1.6.10",
-    "electron": "^2.0.3",
-    "electron-rebuild": "^1.7.3",
-    "tslint": "^5.10.0",
-    "typescript": "^2.9.2"
+    "start": "webpack --config webpack.config.js",
+    "app": "electron .",
+    "postinstall": "electron-rebuild --force"
   },
   "dependencies": {
-    "das": "diefarbe/node-lib#better_state"
+    "das": "diefarbe/node-lib#better_state",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "awesome-typescript-loader": "^5.2.0",
+    "electron": "^2.0.3",
+    "electron-rebuild": "^1.7.3",
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.9.2",
+    "webpack": "^4.14.0",
+    "webpack-cli": "^3.0.8"
   }
 }
