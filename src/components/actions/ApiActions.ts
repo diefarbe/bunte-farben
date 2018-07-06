@@ -1,8 +1,6 @@
 import { ColorResult } from "../../../node_modules/@types/react-color";
 import { KeyModel } from "../../keyboards/en-US";
 
-
-
 export async function getKeyboardData() {
 
     window.addEventListener('blur', () => {
@@ -66,7 +64,6 @@ export async function setKeysColor(keys: { [key in string]: KeyModel }[], color:
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            // "Content-Type": "application/x-www-form-urlencoded",
         },
         body: JSON.stringify(keyNewSettings),
     });

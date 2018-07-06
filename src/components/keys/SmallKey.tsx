@@ -12,18 +12,15 @@ export class SmallKey extends React.Component<{
 
     render() {
         const horizontalMultiplier = 3;
-        const verticalMultiple = 9;
-        const leftSpace = 40;
-
         return <div
             key={this.props.text}
             onClick={this.props.buttonClicked}
             style={{
-                top: this.props.y * horizontalMultiplier,
-                left: this.props.x * verticalMultiple + leftSpace,
+                top: this.props.y + "%",
+                left: (this.props.x + 1.5) + "%",
                 position: "absolute",
-                width: this.props.width * verticalMultiple + "px",
-                height: this.props.height * horizontalMultiplier + "px",
+                width: this.props.width + "%",
+                height: this.props.height + "%",
                 backgroundColor: this.props.selected ? "red" : "green",
                 color: "#FFF",
                 textAlign: "center",
