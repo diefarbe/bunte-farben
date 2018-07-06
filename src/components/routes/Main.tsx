@@ -1,12 +1,16 @@
 import * as React from "react";
 import { Switch, Route } from "react-router";
 import { Home } from "../pages/Home";
-import { Keyboard } from "../pages/Keyboard";
+import Keyboard from "../pages/Keyboard";
 
 export class Main extends React.Component<{}, {}> {
 
     showSettings(event: any) {
         event.preventDefault();
+    }
+
+    shouldComponentUpdate() {
+        return true;
     }
 
     render() {

@@ -1,13 +1,21 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {
+  BrowserWindow,
+  Menu,
+  app,
+  Tray
+} = require("electron");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1100, height: 600})
+  mainWindow = new BrowserWindow({
+    width: 1100,
+    height: 600
+  })
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
@@ -22,6 +30,28 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  const tray = new Tray('./baseline_keyboard_black_18dp.png')
+  const contextMenu = Menu.buildFromTemplate([{
+      label: 'Item1',
+      type: 'radio'
+    },
+    {
+      label: 'Item2',
+      type: 'radio'
+    },
+    {
+      label: 'Item3',
+      type: 'radio',
+      checked: true
+    },
+    {
+      label: 'Item4',
+      type: 'radio'
+    }
+  ])
+  tray.setToolTip('This is my application.')
+  tray.setContextMenu(contextMenu)
 }
 
 // This method will be called when Electron has finished

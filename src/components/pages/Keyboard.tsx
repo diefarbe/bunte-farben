@@ -1,19 +1,37 @@
+import { Component } from "react";
 import * as React from "react";
 import { SmallKey } from "../keys/SmallKey";
 import { enUS, KeyModel } from "../../keyboards/en-US";
-import { PhotoshopPicker, SketchPicker } from "react-color";
+import { PhotoshopPicker, SketchPicker, ColorResult } from "react-color";
+import { connectComponent } from "../utils/connectComponent";
+import { setKeysColor } from "../actions/ApiActions";
 
-export class Keyboard extends React.Component<{}, {}> {
+class Keyboard extends Component<{ actions: any, keys: any }, {}> {
+
+    shouldComponentUpdate(nextProps: any) {
+        console.log("UPDATES?");
+        return true;
+    }
+
 
     render() {
 
-        const en = Object.keys(enUS).map((key: string) => {
-            const keyModel = ((enUS as any)[key] as KeyModel);
+        const data = require("../../../assets/en_US");
+
+        console.log("DATA:");
+        let keys = data.map((keyModel: KeyModel) => {
+
+            const onClick = () => {
+                this.props.actions.keySelected(keyModel);
+            }
+
             return <div
-                key={key}
+                key={keyModel.shortName}
             >
                 <SmallKey
-                    text={keyModel.shortName}
+                    selected={this.props.keys.hasOwnProperty(keyModel.shortName)}
+                    buttonClicked={onClick}
+                    text={keyModel.description}
                     width={keyModel.width}
                     height={keyModel.height}
                     y={keyModel.topLeftCoordinates.y}
@@ -23,22 +41,31 @@ export class Keyboard extends React.Component<{}, {}> {
 
         });
 
+        const handleChangeComplete = (color: ColorResult) => {
+            setKeysColor(this.props.keys, color);
+        };
+
         return <div>
             <div>
                 <div style={{
                     position: "relative",
-                    width: "675px",
-                    height: "200px",
+                    width: "100%",
+                    height: "300px",
                     background: "#ccc",
                 }}>
-                    {en}
+                    {keys}
                 </div>
             </div>
             <div style={{
 
             }}>
-                <SketchPicker />
+                <SketchPicker
+                    disableAlpha={true}
+                    onChangeComplete={handleChangeComplete}
+                />
             </div>
         </div>
     }
 }
+
+export default connectComponent(["keys"], Keyboard)
