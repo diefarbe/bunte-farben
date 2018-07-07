@@ -1079,24 +1079,24 @@
     "width": 4.28,
     "height": 13.5
   }, {
-    "ledIds": [0, 24, 48, 72, 96, 120, 144, 168, 192],
-    "description": "Left Pipe",
+    "ledIds": [0, 1, 24, 48, 72, 96, 120, 144, 168, 192],
+    "description": "leftPipe",
     "shortName": "|-L",
     "topLeftCoordinates": {
       "x": -1.0272,
       "y": 27
     },
-    "width": 0.4,
+    "width": 0.9,
     "height": 54
   }, {
     "ledIds": [71, 95, 119, 143, 167, 191, 215],
-    "description": "Right Pipe",
+    "description": "rightPipe",
     "shortName": "|-R",
     "topLeftCoordinates": {
       "x": 97.7552,
       "y": 27
     },
-    "width": 0.4,
+    "width": 0.9,
     "height": 54
   }]
   

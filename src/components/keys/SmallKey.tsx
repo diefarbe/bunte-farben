@@ -27,7 +27,7 @@ export class SmallKey extends React.Component<{
             keyName =
                 <div
                     style={{
-                        lineHeight: this.props.height * 1.5 + "px",
+                        lineHeight: this.props.height * 1.3 + "px",
                     }}
                 >
                     <div>{split[0]}</div>
@@ -40,20 +40,17 @@ export class SmallKey extends React.Component<{
             key={this.props.text}
             onClick={this.props.buttonClicked}
             style={{
-                top: (this.props.y + 1.5) + "%",
-                left: (this.props.x + 1.5) + "%",
                 position: "absolute",
-                width: this.props.width + "%",
-                height: this.props.height + "%",
+                top: (this.props.y) + "%",
+                left: (this.props.x + 1.4) + "%",
+                width: (this.props.width - .5) + "%",
+                height: (this.props.height - .5) + "%",
                 backgroundColor: this.props.selected ? "#666" : "#333",
                 color: "#FFF",
-                borderRadius: "5",
+                borderRadius: "5px",
                 textAlign: "center",
                 verticalAlign: "center",
                 fontSize: "12px",
-                borderStyle: "solid",
-                borderColor: "white",
-                borderWidth: "1px 1px",
             }}>
             {keyName}
         </div>
@@ -110,8 +107,8 @@ function prettyName(text: string) {
             return "\" '"
         case "escape":
             return "esc";
-        case "Left Pipe":
-        case "Right Pipe":
+        case "leftPipe":
+        case "rightPipe":
             return ""
         case "NumPad_ENTER":
         case "return":
@@ -136,6 +133,12 @@ function prettyName(text: string) {
             return "⇪";
         case "numLock":
             return "num";
+        case "multiply":
+            return "*";
+        case "divide":
+            return "/"
+        case "substract":
+            return "-"
         default:
             if (text.includes("numpad")) {
                 return text.substr(6, text.length);

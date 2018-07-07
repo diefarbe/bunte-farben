@@ -8,11 +8,10 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "app": "electron .",
-    "postinstall": "electron-rebuild --force"
+    "app": "electron ."
   },
   "dependencies": {
-    "electron": "^2.0.3",
+    "electron": "2.0.4",
     "react": "^16.4.1",
     "react-color": "^2.14.1",
     "react-dom": "^16.4.1",

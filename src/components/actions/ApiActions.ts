@@ -27,9 +27,9 @@ export async function getKeysData(): Promise<void> {
     const data = await response.json();
 };
 
-function buildSillyModel(color: number) {
+function buildSillyModel() {
     return {
-        "upHoldLevel": color,
+        "upHoldLevel": 0,
         "downHoldLevel": 0,
         "upMaximumLevel": 0,
         "downMinimumLevel": 0,
@@ -44,21 +44,30 @@ function buildSillyModel(color: number) {
     }
 }
 
-export async function setKeysColor(keys: { [key in string]: KeyModel }[], color: ColorResult) {
+function mergeModels(model: any, channelData: any) {
+    return {
+        ...model,
+        ...channelData,
+    }
+}
 
+export async function setKeysColor(keys: { [key in string]: KeyModel }[], channels: any[]) {
 
     const keyNewSettings = [];
+    const sillyModel = buildSillyModel();
     for (let key in keys) {
         const data = keys[key];
         keyNewSettings.push({
             key: data.description,
             data: {
-                red: buildSillyModel(color.rgb.r),
-                green: buildSillyModel(color.rgb.g),
-                blue: buildSillyModel(color.rgb.b),
+                red: mergeModels(sillyModel, channels[0]),
+                green: mergeModels(sillyModel, channels[1]),
+                blue: mergeModels(sillyModel, channels[2]),
             }
         })
     }
+
+    console.log("SENDING:" + JSON.stringify(keyNewSettings));
 
     const response = await fetch("http://localhost:3030/keys", {
         method: "PUT",

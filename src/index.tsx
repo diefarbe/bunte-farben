@@ -8,6 +8,6 @@ const store = createStore(rootReducer)
 
 ReactDOM.render(
     <Hello store={store} />,
-    document.getElementById("example")
+    document.getElementById("root")
 );
 

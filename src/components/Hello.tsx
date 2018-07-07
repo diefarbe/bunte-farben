@@ -6,10 +6,6 @@ import { getKeyboardData } from "./actions/ApiActions";
 import { Provider } from 'react-redux';
 import { createStore } from "redux";
 
-// 'HelloProps' describes the shape of props.
-// State is never set so we use the '{}' type.
-
-
 export class Hello extends React.Component<{ store: any }, {}> {
 
     componentDidMount() {
@@ -19,7 +15,7 @@ export class Hello extends React.Component<{ store: any }, {}> {
     render() {
         return <Provider store={this.props.store}>
             <HashRouter>
-                <div>
+                <div style={{ display: "flex" }}>
                     <Header />
                     <Main />
                 </div>
