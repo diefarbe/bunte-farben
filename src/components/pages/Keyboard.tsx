@@ -17,8 +17,6 @@ class Keyboard extends Component<{ actions: any, keys: any }, {}> {
     render() {
 
         const data = require("../../../assets/en_US");
-
-        console.log("DATA:");
         let keys = data.map((keyModel: KeyModel) => {
 
             const onClick = () => {
