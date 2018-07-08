@@ -1,7 +1,7 @@
 import { Component } from "react";
 import * as React from "react";
-import { SmallKey } from "../keys/SmallKey";
-import { enUS, KeyModel } from "../../keyboards/en-US";
+import { SmallKey } from "./keys/SmallKey";
+import { KeyModel } from "../keyboards/KeyModel";
 
 export type KeyboardProps = {
     onKeySelected: (key: KeyModel) => any;
@@ -15,7 +15,7 @@ export class Keyboard extends Component<KeyboardProps, {}> {
     }
 
     render() {
-        const data = require("../../../assets/en_US");
+        const data = require("../../assets/en_US");
         let keys = data.map((keyModel: KeyModel) => {
 
             const onClick = () => {

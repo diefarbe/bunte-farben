@@ -1,15 +1,10 @@
 import { Component } from "react";
 import * as React from "react";
-import { SmallKey } from "../keys/SmallKey";
-import { enUS, KeyModel } from "../../keyboards/en-US";
-import { PhotoshopPicker, SketchPicker, ColorResult } from "react-color";
 import { connectComponent } from "../utils/connectComponent";
 import { setKeysColor } from "../actions/ApiActions";
 import { Keyboard } from "../components/Keyboard";
 import ColorPopup from "../components/ColorPopup";
-import { TextInput } from "../components/Input";
 import { ColorChannel } from "../components/ColorChannel";
-
 
 export interface ChannelDef {
     [key: string]: any

@@ -1,5 +1,4 @@
-import { ColorResult } from "../../../node_modules/@types/react-color";
-import { KeyModel } from "../../keyboards/en-US";
+import { KeyModel } from "../keyboards/KeyModel";
 
 export async function getKeyboardData() {
 

@@ -1,4 +1,4 @@
-import { KeyModel } from "../../keyboards/en-US";
+import { KeyModel } from "../keyboards/KeyModel";
 
 
 export const keySelected = (key: KeyModel) => ({
