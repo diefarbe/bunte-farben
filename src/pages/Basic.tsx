@@ -5,6 +5,7 @@ import { setKeysColor } from "../actions/ApiActions";
 import { Keyboard } from "../components/Keyboard";
 import ColorPopup from "../components/ColorPopup";
 import { ColorChannel } from "../components/ColorChannel";
+import { ColorChannelBasic } from "../components/ColorChannelBasic";
 
 export interface ChannelDef {
     [key: string]: any
@@ -35,16 +36,10 @@ class Basic extends Component<{ actions: any, keys: any }, ChannelDef> {
 
     handleTextChanged = (text: string, key: string, channel?: string) => {
         switch (key) {
-            case "upHoldLevel":
-            case "downHoldLevel":
-            case "upMaximumLevel":
-            case "downMinimumLevel":
+            case "startLevel":
+            case "endLevel":
 
                 text = text.substr(1, text.length - 1);
-                console.log("COLORS:" + parseInt("0x" + text.substr(0, 2)));
-                console.log("COLORS:" + parseInt("0x" + text.substr(2, 2)));
-                console.log("COLORS:" + parseInt("0x" + text.substr(4, 2)));
-
                 this.handleChannelChange(parseInt("0x" + text.substr(0, 2)), key, "red");
                 this.handleChannelChange(parseInt("0x" + text.substr(2, 2)), key, "green");
                 this.handleChannelChange(parseInt("0x" + text.substr(4, 2)), key, "blue");
@@ -84,18 +79,16 @@ class Basic extends Component<{ actions: any, keys: any }, ChannelDef> {
                 />
             </div>
 
-            <ColorPopup text={"upHoldLevel"} onColorChanged={this.handleTextChanged} />
-            <ColorPopup text={"downHoldLevel"} onColorChanged={this.handleTextChanged} />
-            <ColorPopup text={"upMaximumLevel"} onColorChanged={this.handleTextChanged} />
-            <ColorPopup text={"downMinimumLevel"} onColorChanged={this.handleTextChanged} />
+            <ColorPopup text={"startLevel"} onColorChanged={this.handleTextChanged} />
+            <ColorPopup text={"endLevel"} onColorChanged={this.handleTextChanged} />
             <div style={{
                 backgroundColor: "#EEE",
                 display: "flex",
             }}>
 
-                <ColorChannel channel="red" onChannelChange={this.handleTextChanged} />
-                <ColorChannel channel="green" onChannelChange={this.handleTextChanged} />
-                <ColorChannel channel="blue" onChannelChange={this.handleTextChanged} />
+                <ColorChannelBasic channel="red" onChannelChange={this.handleTextChanged} />
+                <ColorChannelBasic channel="green" onChannelChange={this.handleTextChanged} />
+                <ColorChannelBasic channel="blue" onChannelChange={this.handleTextChanged} />
 
                 <div style={{
                     flex: "0 0 15%",

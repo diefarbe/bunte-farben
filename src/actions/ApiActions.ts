@@ -1,4 +1,5 @@
 import { KeyModel } from "../keyboards/KeyModel";
+import { Animation } from "../animations/Animations";
 
 export async function getKeyboardData() {
 
@@ -55,13 +56,17 @@ export async function setKeysColor(keys: { [key in string]: KeyModel }[], channe
     const keyNewSettings = [];
     const sillyModel = buildSillyModel();
     for (let key in keys) {
+        const red = channels[0];
+        const green = channels[1];
+        const blue = channels[2];
+
         const data = keys[key];
         keyNewSettings.push({
             key: data.description,
             data: {
-                red: mergeModels(sillyModel, channels[0]),
-                green: mergeModels(sillyModel, channels[1]),
-                blue: mergeModels(sillyModel, channels[2]),
+                red: Animation.createAnimationFromObject(channels[0]),
+                green: Animation.createAnimationFromObject(channels[1]),
+                blue: Animation.createAnimationFromObject(channels[2]),
             }
         })
     }
